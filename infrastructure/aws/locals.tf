@@ -1,6 +1,6 @@
 locals {
   workspace_name = "${replace(terraform.workspace, "blog-", "")}"
-  sub_domain = "${workspace_name == "master" ? "" : "${local.workspace_name}."}"
+  sub_domain = "${local.workspace_name == "master" ? "" : "${local.workspace_name}."}"
 
   root_domain_name = "${local.sub_domain}${var.root_domain}"
 
