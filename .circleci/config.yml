@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: ubuntu
 
+    working_directory: /tmp/work
     steps:
       - checkout
 
@@ -24,7 +25,7 @@ jobs:
               tar -xvf /tmp/hugo.tar.gz -C /usr/bin/
 
       - run:
-          name: Test Hugo
+          name: Build Hugo Site
           command: hugo
 
       - run:
