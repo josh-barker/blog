@@ -4,7 +4,7 @@ executors:
   ubuntu:
     docker:
       - image: circleci/golang:stretch
-    working_directory: /tmp/work
+    working_directory: /tmp/work/blog
 
 jobs:
   build:
@@ -25,12 +25,11 @@ jobs:
           name: Build Hugo Site
           command: |
               /tmp/hugo_app/hugo
-              ls /tmp/work/public
 
       - persist_to_workspace:
-          root: /tmp/work
+          root: /tmp
           paths:
-            - public
+            - work
 
   deploy:
     executor: ubuntu
