@@ -1,0 +1,43 @@
+.logo__cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1rem;
+  background: #6251fe;
+  margin-left: 5px;
+  border-radius: 1px;
+  animation-iteration-count: 0;
+  /* animation: cursor;
+  animation-iteration-count: 1;
+  animation-delay: 2s;
+  animation-duration: 1.6s; */
+}
+
+.div-table {
+  display: table;         
+  width: 100%;         
+  background-color: #ffffff;
+  border-spacing: 5px;
+}
+
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+
+.div-table-col {
+  float: none;
+  display: table-cell;         
+  text-align: center; 
+  font-size: 30px;
+  padding: 0px 20px 0px 20px;
+}
+
+.div-table-col a:hover {
+  color: #6251fe;
+}
+
+/* .post .div-center {
+  max-width: 600px;
+  text-align: center;
+} */
