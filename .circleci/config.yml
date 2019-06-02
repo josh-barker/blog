@@ -55,7 +55,17 @@ jobs:
 
               /tmp/terraform_app/terraform workspace new "${CIRCLE_BRANCH}"
 
-              /tmp/terraform_app/terraform workspace delete "${CIRCLE_BRANCH}"
+              /tmp/terraform_app/terraform apply -auto-approve -input=false
+
+      - run:
+          name: Destroy Terraform Resources
+          command: /tmp/terraform_app/terraform destroy -auto-approve -input=false
+          when: always
+              
+      - run:
+          name: Delete Terraform Workspace
+          command: /tmp/terraform_app/terraform workspace delete "${CIRCLE_BRANCH}"
+          when: always
 
 workflows:
   version: 2
