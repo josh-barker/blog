@@ -64,7 +64,9 @@ jobs:
               
       - run:
           name: Delete Terraform Workspace
-          command: /tmp/terraform_app/terraform workspace delete "${CIRCLE_BRANCH}"
+          command: |
+              /tmp/terraform_app/terraform workspace select staging
+              /tmp/terraform_app/terraform workspace delete "${CIRCLE_BRANCH}"
           when: always
 
 workflows:
