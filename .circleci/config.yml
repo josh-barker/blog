@@ -42,6 +42,7 @@ jobs:
       - run:
           name: Setup Terraform
           command: |
+              mkdir -p /tmp/terraform_app
               wget -O /tmp/terraform_app/terraform.zip https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
               sudo unzip /tmp/terraform_app/terraform.zip -d /usr/bin/
 
