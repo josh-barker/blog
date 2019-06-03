@@ -8,4 +8,5 @@ variable "root_domain" {
 
 variable "blog_source_path" {
   description = "Path for where the blog exists"
+  default = ""
 }
