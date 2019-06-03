@@ -42,9 +42,8 @@ jobs:
       - run:
           name: Setup Terraform
           command: |
-              mkdir =p /tmp/terraform_app
               wget -O /tmp/terraform_app/terraform.zip https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
-              unzip /tmp/terraform_app/terraform.zip -d /tmp/terraform_app
+              sudo unzip /tmp/terraform_app/terraform.zip -d /usr/bin/
 
       - run:
           name: Install awscli
@@ -55,23 +54,23 @@ jobs:
           name: Run Terraform
           command: |
               export TF_WORKSPACE="staging"
-              /tmp/terraform_app/terraform init -backend-config "token=${TFE_TOKEN}" -input=false
+              terraform init -backend-config "token=${TFE_TOKEN}" -input=false
               unset TF_WORKSPACE
 
-              /tmp/terraform_app/terraform workspace new "${CIRCLE_BRANCH}"
+              terraform workspace new "${CIRCLE_BRANCH}"
 
-              /tmp/terraform_app/terraform apply -auto-approve -input=false
+              terraform apply -auto-approve -input=false
 
       - run:
           name: Destroy Terraform Resources
-          command: /tmp/terraform_app/terraform destroy -auto-approve -input=false
+          command: terraform destroy -auto-approve -input=false
           when: always
               
       - run:
           name: Delete Terraform Workspace
           command: |
-              /tmp/terraform_app/terraform workspace select staging
-              /tmp/terraform_app/terraform workspace delete "${CIRCLE_BRANCH}"
+              terraform workspace select staging
+              terraform workspace delete "${CIRCLE_BRANCH}"
           when: always
 
 workflows:
