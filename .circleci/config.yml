@@ -47,6 +47,11 @@ jobs:
               unzip /tmp/terraform_app/terraform.zip -d /tmp/terraform_app
 
       - run:
+          name: Install awscli
+          command: |
+              sudo apt-get -y -qq install awscli
+
+      - run:
           name: Run Terraform
           command: |
               export TF_WORKSPACE="staging"
