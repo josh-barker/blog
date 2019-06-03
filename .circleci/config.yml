@@ -60,7 +60,7 @@ jobs:
 
               terraform workspace new "${CIRCLE_BRANCH}"
 
-              terraform apply -auto-approve -input=false
+              terraform apply -auto-approve -input=false -var "blog_source_path=/tmp/work/blog/public"
 
       - run:
           name: Destroy Terraform Resources
