@@ -19,12 +19,12 @@ jobs:
           command: |
               mkdir -p /tmp/hugo_app
               wget -O /tmp/hugo_app/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz
-              tar -xvf /tmp/hugo_app/hugo.tar.gz -C /tmp/hugo_app
+              sudo tar -xvf /tmp/hugo_app/hugo.tar.gz -C /usr/bin/
 
       - run:
           name: Build Hugo Site
           command: |
-              /tmp/hugo_app/hugo
+              hugo
 
       - persist_to_workspace:
           root: /tmp/work
