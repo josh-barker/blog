@@ -66,12 +66,19 @@ jobs:
 
       - run:
           name: Destroy Terraform Resources
-          command: terraform destroy -auto-approve -input=false
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+              exit 0
+            fi
+            terraform destroy -auto-approve -input=false
           when: always
-              
+
       - run:
           name: Delete Terraform Workspace
           command: |
+              if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+                exit 0
+              fi
               terraform workspace select staging
               terraform workspace delete "${CIRCLE_BRANCH}"
           when: always
