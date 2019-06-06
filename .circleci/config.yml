@@ -56,7 +56,7 @@ jobs:
       - run:
           name: Run Terraform
           command: |
-              export TF_WORKSPACE="staging"
+              export TF_WORKSPACE="${DEFAULT_WORKSPACE}"
               terraform init -backend-config "token=${TFE_TOKEN}" -input=false
               unset TF_WORKSPACE
 
@@ -79,7 +79,7 @@ jobs:
               if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
                 exit 0
               fi
-              terraform workspace select staging
+              terraform workspace select "${DEFAULT_WORKSPACE}"
               terraform workspace delete "${CIRCLE_BRANCH}"
           when: always
 
