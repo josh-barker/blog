@@ -1,8 +1,8 @@
 +++
-title = "Small Batch Sizes"
+title = "Observe Your Customers"
 date = "2019-03-30"
 author = "Josh"
-tags = ["devops", "flow"]
+tags = ["devops", "flow", "feedback"]
 +++
 
 # Observe your customers
