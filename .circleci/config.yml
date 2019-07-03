@@ -58,9 +58,9 @@ jobs:
           command: |
               export TF_WORKSPACE="${DEFAULT_WORKSPACE}"
               terraform init -backend-config "token=${TFE_TOKEN}" -input=false
-              unset TF_WORKSPACE
 
               if [[ "${CIRCLE_BRANCH}" != "master" ]]; then
+                unset TF_WORKSPACE
                 terraform workspace new "${CIRCLE_BRANCH}"
               fi
 
