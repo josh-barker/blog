@@ -60,7 +60,9 @@ jobs:
               terraform init -backend-config "token=${TFE_TOKEN}" -input=false
               unset TF_WORKSPACE
 
-              terraform workspace new "${CIRCLE_BRANCH}"
+              if [[ "${CIRCLE_BRANCH}" != "master" ]]; then
+                terraform workspace new "${CIRCLE_BRANCH}"
+              fi
 
               terraform apply -auto-approve -input=false -var "blog_source_path=/tmp/work/blog/public"
 
