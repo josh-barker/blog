@@ -13,7 +13,7 @@ author = "Josh"
 }
 </style>
 
-My name is Josh Barker and this is my blog.
+My name is Josh Barker.
 
 Here you'll find my thoughts on software, development practices and books.
 
