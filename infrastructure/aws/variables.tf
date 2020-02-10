@@ -10,3 +10,13 @@ variable "blog_source_path" {
   description = "Path for where the blog exists"
   default = ""
 }
+
+variable "aws_access_key" {
+  description = "Access key"
+  sensitive = true
+}
+
+variable "aws_secret_key" {
+  description = "Secret key"
+  sensitive = true
+}
