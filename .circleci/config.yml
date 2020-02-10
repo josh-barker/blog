@@ -64,7 +64,8 @@ jobs:
                 terraform workspace new "${CIRCLE_BRANCH}"
               fi
 
-              terraform apply -auto-approve -input=false -var "blog_source_path=/tmp/work/blog/public"
+              echo "blog_source_path=/tmp/work/blog/public" > blog-settings.auto.tfvars
+              terraform apply -auto-approve -input=false
 
       - run:
           name: Destroy Terraform Resources
@@ -72,6 +73,7 @@ jobs:
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               exit 0
             fi
+            export CONFIRM_DESTROY=1
             terraform destroy -auto-approve -input=false
           when: always
 
