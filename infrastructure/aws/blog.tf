@@ -14,7 +14,7 @@ resource "aws_s3_bucket_object" "blog" {
   for_each = fileset("${path.module}/blog", "**")
 
   bucket = aws_s3_bucket.www.id
-  key    = replace(each.key, "/", "-")
+  key    = each.key
   source = "blog/${each.key}"
   etag   = filemd5("blog/${each.key}")
 }
