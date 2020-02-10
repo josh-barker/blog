@@ -6,4 +6,5 @@ terraform {
       prefix = "blog-"
     }
   }
-} 
+}
+
