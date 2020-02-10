@@ -64,9 +64,9 @@ jobs:
                 terraform workspace new "${CIRCLE_BRANCH}"
               fi
 
-              echo 'blog_source_path="/tmp/work/blog/public"' > blog-settings.auto.tfvars
-              echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> blog-settings.auto.tfvars
-              echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> blog-settings.auto.tfvars
+              echo -e 'blog_source_path="/tmp/work/blog/public"\n' > blog-settings.auto.tfvars
+              echo -e "AWS_ACCESS_KEY_ID=\"$AWS_ACCESS_KEY_ID\"\n" >> blog-settings.auto.tfvars
+              echo -e "AWS_SECRET_ACCESS_KEY=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
               terraform apply -auto-approve -input=false
 
       - run:
