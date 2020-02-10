@@ -67,6 +67,8 @@ jobs:
               echo -e 'blog_source_path="/tmp/work/blog/public"\n' > blog-settings.auto.tfvars
               echo -e "aws_access_key=\"$AWS_ACCESS_KEY_ID\"\n" >> blog-settings.auto.tfvars
               echo -e "aws_secret_key=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
+              echo -e "CONFIRM_DESTROY=\"1\"\n" >> blog-settings.auto.tfvars
+
               terraform apply -auto-approve -input=false
 
       - run:
@@ -75,7 +77,6 @@ jobs:
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               exit 0
             fi
-            export CONFIRM_DESTROY=1
             terraform destroy -auto-approve -input=false
           when: always
 
