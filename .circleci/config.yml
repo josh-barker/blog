@@ -52,6 +52,7 @@ jobs:
               curl -O https://bootstrap.pypa.io/get-pip.py
               sudo python2.7 get-pip.py
               sudo pip install awscli
+              which aws
 
       - run:
           name: Run Terraform
@@ -68,7 +69,7 @@ jobs:
               echo -e "aws_access_key=\"$AWS_ACCESS_KEY_ID\"\n" >> blog-settings.auto.tfvars
               echo -e "aws_secret_key=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
               echo -e "CONFIRM_DESTROY=\"1\"\n" >> blog-settings.auto.tfvars
-
+              which aws
               terraform apply -auto-approve -input=false
 
       - run:

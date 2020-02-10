@@ -6,6 +6,6 @@ resource "null_resource" "upload_blog" {
   }
 
   provisioner "local-exec" {
-    command = "find / -name aws; aws s3 sync ${var.blog_source_path} s3://${aws_s3_bucket.www.id}"
+    command = "aws s3 sync ${var.blog_source_path} s3://${aws_s3_bucket.www.id}"
   }
 }
