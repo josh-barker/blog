@@ -64,7 +64,7 @@ jobs:
                 terraform workspace new "${CIRCLE_BRANCH}"
               fi
 
-              echo "blog_source_path=/tmp/work/blog/public" > blog-settings.auto.tfvars
+              echo 'blog_source_path="/tmp/work/blog/public"' > blog-settings.auto.tfvars
               terraform apply -auto-approve -input=false
 
       - run:
