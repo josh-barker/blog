@@ -70,7 +70,7 @@ jobs:
               echo -e "aws_secret_key=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
               echo -e "CONFIRM_DESTROY=\"1\"\n" >> blog-settings.auto.tfvars
               
-              cp -rf /tmp/work/blog .
+              cp -rf /tmp/work/blog/public blog
               
               terraform apply -auto-approve -input=false
 
