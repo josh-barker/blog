@@ -90,7 +90,7 @@ jobs:
                 exit 0
               fi
               terraform workspace select "${DEFAULT_WORKSPACE}"
-              terraform workspace delete "${CIRCLE_BRANCH}"
+              terraform workspace delete -force "${CIRCLE_BRANCH}"
           when: always
 
 workflows:
