@@ -68,6 +68,7 @@ jobs:
               echo -e 'blog_source_path="/tmp/work/blog/public"\n' > blog-settings.auto.tfvars
               echo -e "aws_access_key=\"$AWS_ACCESS_KEY_ID\"\n" >> blog-settings.auto.tfvars
               echo -e "aws_secret_key=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
+              echo -e "branch=\"$CIRCLE_BRANCH\"\n" >> blog-settings.auto.tfvars
               echo -e "CONFIRM_DESTROY=\"1\"\n" >> blog-settings.auto.tfvars
               
               cp -rf /tmp/work/blog/public blog
