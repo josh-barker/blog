@@ -17,6 +17,6 @@ resource "aws_s3_bucket_object" "blog" {
   key          = each.key
   source       = "blog/${each.key}"
   etag         = filemd5("blog/${each.key}")
-  # content_type = "text/html"
+  content_type = split(".", each.key)[1] == "html" ? "text/html" : split(".", each.key)[1] == "css" ? "text/css" : null
   acl          = "public-read"
 }
