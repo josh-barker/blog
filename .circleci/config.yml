@@ -69,6 +69,8 @@ jobs:
       - run:
           name: Deploy Terraform Resources
           command: |
+            export TF_WORKSPACE="${DEFAULT_WORKSPACE}"
+
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               terraform apply -auto-approve -input=false
             fi
