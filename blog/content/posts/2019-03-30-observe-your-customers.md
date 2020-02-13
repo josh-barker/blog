@@ -18,6 +18,7 @@ However, one of my team observed that when people followed the `README.md`, they
 So he took the initiative to make some adjustments.
 
 He improved the documentation by:
+
 - fixing the flow and order of instructions
 - simplified the setup steps
 

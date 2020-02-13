@@ -43,18 +43,11 @@ jobs:
           name: Setup Terraform
           command: |
               mkdir -p /tmp/terraform_app
-              wget -O /tmp/terraform_app/terraform.zip https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+              wget -O /tmp/terraform_app/terraform.zip https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip
               sudo unzip /tmp/terraform_app/terraform.zip -d /usr/bin/
 
       - run:
-          name: Install awscli
-          command: |
-              curl -O https://bootstrap.pypa.io/get-pip.py
-              sudo python2.7 get-pip.py
-              sudo pip install awscli
-
-      - run:
-          name: Run Terraform
+          name: Validate  Terraform
           command: |
               export TF_WORKSPACE="${DEFAULT_WORKSPACE}"
               terraform init -backend-config "token=${TFE_TOKEN}" -input=false
@@ -64,26 +57,21 @@ jobs:
                 terraform workspace new "${CIRCLE_BRANCH}"
               fi
 
-              terraform apply -auto-approve -input=false -var "blog_source_path=/tmp/work/blog/public"
+              echo -e 'blog_source_path="/tmp/work/blog/public"\n' > blog-settings.auto.tfvars
+              echo -e "aws_access_key=\"$AWS_ACCESS_KEY_ID\"\n" >> blog-settings.auto.tfvars
+              echo -e "aws_secret_key=\"$AWS_SECRET_ACCESS_KEY\"\n" >> blog-settings.auto.tfvars
 
+              cp -rf /tmp/work/blog/public blog
+
+              terraform validate
+              terraform plan
+              
       - run:
-          name: Destroy Terraform Resources
+          name: Deploy Terraform Resources
           command: |
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              exit 0
+              terraform apply -auto-approve -input=false
             fi
-            terraform destroy -auto-approve -input=false
-          when: always
-
-      - run:
-          name: Delete Terraform Workspace
-          command: |
-              if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-                exit 0
-              fi
-              terraform workspace select "${DEFAULT_WORKSPACE}"
-              terraform workspace delete "${CIRCLE_BRANCH}"
-          when: always
 
 workflows:
   version: 2

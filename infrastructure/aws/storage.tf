@@ -1,11 +1,11 @@
 resource "aws_s3_bucket" "www" {
-  bucket = "${local.www_domain}"
+  bucket = local.www_domain
 
   acl = "public-read"
 
   force_destroy = true
 
-  tags = "${local.default_tags}"
+  tags = local.default_tags
 
   policy = <<POLICY
 {
@@ -22,8 +22,10 @@ resource "aws_s3_bucket" "www" {
 }
 POLICY
 
+
   website {
     index_document = "index.html"
     error_document = "404.html"
   }
 }
+
