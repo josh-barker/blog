@@ -44,7 +44,10 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   # If the expression in the following list itself returns a list, remove the
   # brackets to avoid interpretation as a list of lists. If the expression
   # returns a single list item then leave it as-is and remove this TODO comment.
-  aliases = [local.www_domain]
+  aliases = [
+    local.www_domain,
+    var.root_domain,
+  ]
 
   restrictions {
     geo_restriction {
