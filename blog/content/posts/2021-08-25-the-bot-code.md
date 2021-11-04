@@ -63,4 +63,6 @@ However, I found it harder to write small unit tests for specific functions, as 
 
 ---
 
-Now that I've got this bot working, I need to deploy it! <See next post>
+Now that I've got this bot working, I need to deploy it!
+
+See the next [post](/posts/2021-09-08-the-bot-gcp)!

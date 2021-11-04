@@ -82,8 +82,7 @@ I ended up with 2 x Machine Learning models that I could use to classify a Pull 
 
 But now, how do I integrate the to Github?
 
-<See next blog post!>
-
+See the next [post](/posts/2021-08-25-the-bot-code)!
 
 Lastly, if you're keen to learn more about Machine Learning, I'd suggest you try Google's free course or look at the training material on any top cloud provider.
 
