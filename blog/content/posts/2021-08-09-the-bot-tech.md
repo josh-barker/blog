@@ -1,11 +1,9 @@
 +++
 title = "Review Bots - The Tech"
-date = "2021-07-28"
+date = "2021-08-09"
 author = "Josh"
 tags = ["github", "developer-tools"]
 +++
-
-# Review Bots - Tech
 
 Now that I had some ideas about what I wanted to build, I needed to make some technology decisions.
 

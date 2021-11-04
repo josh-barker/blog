@@ -1,11 +1,9 @@
 +++
 title = "Review Bots - The Code"
-date = "2021-07-28"
+date = "2021-08-25"
 author = "Josh"
 tags = ["github", "developer-tools", "javascript", "typescript"]
 +++
-
-# Review Bots - Code
 
 Great. I have some Machine Learning models to categorise Pull Requests. But, how do I build a bot?
 

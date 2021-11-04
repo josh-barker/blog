@@ -1,11 +1,9 @@
 +++
-title = "Review Bots - The Code"
-date = "2021-07-28"
+title = "Review Bots - GCP"
+date = "2021-09-08"
 author = "Josh"
 tags = ["github", "gcp", "terraform"]
 +++
-
-# Review Bots - GCP
 
 As mentioned in a previous post, I decided to deploy to GCP.
 
