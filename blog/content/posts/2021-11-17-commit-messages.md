@@ -2,7 +2,7 @@
 title = "Commit Messages and Automated Releases"
 date = "2021-11-17"
 author = "Josh"
-tags = ["git", "commits", "communication", "automation", "releases]
+tags = ["git", "commits", "communication", "automation", "releases"]
 +++
 
 Writing software is interesting.
